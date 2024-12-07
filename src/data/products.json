@@ -1,0 +1,68 @@
+[
+    {
+      "id": 101,
+      "title": "Smartphone XYZ",
+      "description": "Un smartphone de última generación",
+      "price": 799,
+      "thumbnail": [
+        "ruta/a/la/imagen1.jpg",
+        "ruta/a/la/imagen2.jpg"
+      ],
+      "code": "XYZ123",
+      "stock": 90,
+      "category": "Smartphones",
+      "status": true
+    },
+    {
+      "id": 102,
+      "title": "Smartwatch ABC",
+      "description": "Un reloj inteligente con múltiples funciones",
+      "price": 199,
+      "thumbnail": [
+        "ruta/a/la/imagen3.jpg"
+      ],
+      "code": "ABC456",
+      "stock": 50,
+      "category": "Smartwatches",
+      "status": true
+    },
+    {
+      "id": 103,
+      "title": "Auriculares ABC",
+      "description": "Auriculares inalámbricos con cancelación de ruido",
+      "price": 199,
+      "thumbnail": [
+        "ruta/a/la/imagen4.jpg"
+      ],
+      "code": "DEF789",
+      "stock": 90,
+      "category": "Auriculares",
+      "status": true
+    },
+    {
+      "title": "Smartphone",
+      "description": "Un smartphone de última generación",
+      "price": 600,
+      "thumbnail": [
+        "ruta/a/la/imagen1.jpg",
+        "ruta/a/la/imagen2.jpg"
+      ],
+      "code": "1234",
+      "stock": 100,
+      "category": "Smartphones",
+      "id": 104
+    },
+    {
+      "title": "Smartphone",
+      "description": "Un smartphone de última generación",
+      "price": 600,
+      "thumbnail": [
+        "ruta/a/la/imagen1.jpg",
+        "ruta/a/la/imagen2.jpg"
+      ],
+      "code": "1236",
+      "stock": 100,
+      "category": "Smartphones",
+      "id": 105
+    }
+  ]
