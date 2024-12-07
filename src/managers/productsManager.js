@@ -3,18 +3,26 @@ const path = require('path');
 
 class ProductManager {
   constructor() {
-    this.filePath = path.join(__dirname, 'data', 'products.json');
+    this.filePath = path.join(__dirname, '../data/products.json');
   }
 
-  getProducts(limit) {
-    const products = JSON.parse(fs.readFileSync(this.filePath, 'utf-8'));
-    return limit ? products.slice(0, limit) : products;
+  async getProducts(limit) {
+    try {
+      const products = JSON.parse(await fs.promises.readFile(this.filePath, 'utf-8'));
+      return limit ? products.slice(0, limit) : products;
+    } catch (error) {
+      console.error("Error reading products.json:", error.message);
+      throw new Error("Unable to retrieve products");
+    }
   }
-
-  getProductById(id) {
-    const products = JSON.parse(fs.readFileSync(this.filePath, 'utf-8'));
+  
+  
+  
+  async getProductsById(id) {
+    const products = JSON.parse(await fs.promises.readFile(this.filePath, 'utf-8'));
     return products.find(product => product.id === id);
   }
+  
 
   addProduct(product) {
     const products = JSON.parse(fs.readFileSync(this.filePath, 'utf-8'));

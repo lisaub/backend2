@@ -8,10 +8,6 @@
       padding: 10px;
       margin-bottom: 10px;
     }
-    .product-image {
-      max-width: 150px;
-      margin-bottom: 10px;
-    }
   </style>
 </head>
 <body>
@@ -19,45 +15,13 @@
   <ul id="productList"></ul>
   <form id="productForm">
     <h2>Add a New Product</h2>
-    <label for="title">Title:</label>
-    <input type="text" id="title" required>
-    <label for="price">Price:</label>
-    <input type="number" id="price" required>
+    <label for="productName">Title:</label>
+    <input type="text" id="productName" required>
+    <label for="productPrice">Price:</label>
+    <input type="number" id="productPrice" required>
     <button type="submit">Add Product</button>
   </form>
   <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const socket = io();
-
-    // Listen for 'updateProducts' events to update the product list
-    socket.on('updateProducts', (data) => {
-      const productList = document.getElementById('productList');
-      productList.innerHTML = ''; // Clear current product list
-      data.products.forEach(product => {
-        const productItem = document.createElement('li');
-        productItem.classList.add('product-item');
-        productItem.innerHTML = `
-          <h2>${product.title}</h2>
-          <p>${product.description}</p>
-          <p>Price: $${product.price}</p>
-          <p>Category: ${product.category}</p>
-          <p>Stock: ${product.stock}</p>
-          <p>Status: ${product.status ? 'Available' : 'Out of Stock'}</p>
-          ${product.thumbnail.map(img => `<img class="product-image" src="${img}" alt="${product.title}">`).join('')}
-        `;
-        productList.appendChild(productItem);
-      });
-    });
-
-    // Emit 'addProduct' event when the form is submitted
-    document.getElementById('productForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const title = document.getElementById('title').value;
-      const price = document.getElementById('price').value;
-      socket.emit('addProduct', { title, price }); // Emit with product data
-      document.getElementById('title').value = '';
-      document.getElementById('price').value = '';
-    });
-  </script>
+  <script src="/js/index.js"></script>
 </body>
 </html>

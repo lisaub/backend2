@@ -5,15 +5,19 @@ const ProductManager = require('../managers/productsManager');
 const productManager = new ProductManager();
 
 router.get('/', async (req, res) => {
-  const limit = req.query.limit;
+  console.log("GET /products request received");
+  const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
   try {
     const products = await productManager.getProducts(limit);
+    console.log("Products retrieved:", products);
     res.json(products);
   } catch (error) {
-    console.log(error);
+    console.error("Error retrieving products:", error);
     res.status(500).send({ message: "Error retrieving products" });
   }
 });
+
+
 
 router.get('/:pid', async (req, res) => {
   try {

@@ -1,33 +1,32 @@
 const socket = io();
 
-// Listen for real-time product updates
+// Listen for product updates
 socket.on('updateProducts', (data) => {
-  console.log('Received data:', data);
-  const productList = document.querySelector('#realTimeProductList');
-  
-  // Clear existing list and repopulate it for simplicity
+  const productList = document.getElementById('productList');
   productList.innerHTML = '';
-  
-  // Example logic to handle new products or deletions
-  if (data.deletedId) {
-    console.log('Product deleted with ID:', data.deletedId);
-  } else {
-    const newItem = document.createElement('li');
-    newItem.textContent = `Product: ${data.product.title}, Price: ${data.product.price}`;
-    productList.appendChild(newItem);
-  }
+  data.products.forEach((product) => {
+    const productItem = document.createElement('li');
+    productItem.classList.add('product-item');
+    productItem.innerHTML = `
+      <h2>${product.title}</h2>
+      <p>Price: $${product.price}</p>
+      <p>Description: ${product.description}</p>
+      <p>Stock: ${product.stock}</p>
+      <p>Status: ${product.status ? 'Available' : 'Out of Stock'}</p>
+    `;
+    productList.appendChild(productItem);
+  });
 });
 
-// Add product form event listener
-document.querySelector('#addProductForm').addEventListener('submit', (e) => {
+// Handle product addition form submission
+document.getElementById('productForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  const productName = document.querySelector('#productName').value;
-  const productPrice = document.querySelector('#productPrice').value;
+  const title = document.getElementById('productName').value;
+  const price = document.getElementById('productPrice').value;
 
-  // Send the new product to the server
-  socket.emit('addProduct', { title: productName, price: productPrice });
+  socket.emit('addProduct', { title, price });
 
-  // Clear form fields
-  document.querySelector('#productName').value = '';
-  document.querySelector('#productPrice').value = '';
+  // Clear the form
+  document.getElementById('productName').value = '';
+  document.getElementById('productPrice').value = '';
 });
