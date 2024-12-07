@@ -1,4 +1,5 @@
-MobileMania
+## MobileMania
+
 MobileMania es una tienda de e-commerce para la venta de teléfonos, relojes inteligentes, auriculares y tabletas. Este proyecto está desarrollado utilizando Node.js y Express, y proporciona endpoints para gestionar productos y carritos de compra, así como funcionalidades en tiempo real mediante WebSockets.
 
 Descripción del Proyecto
